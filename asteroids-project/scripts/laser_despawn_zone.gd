@@ -1,0 +1,1 @@
+class_name LaserDespawnZone extends Area2D

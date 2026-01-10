@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk4h4b6561mw6"]
+
+[ext_resource type="Script" uid="uid://diqiva1qsggjk" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Gradient" uid="uid://nbvunvejb8s" path="res://resources/empty_crosshair_gradient.tres" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://c7htnv7v3ovgt" path="res://assets/Ship.png" id="4_dqkch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 100000.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": false,
+"name": &"rotate_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 100000.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": false,
+"name": &"rotate_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 57.07889
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_g2els")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -2500)
+collision_mask = 4
+collide_with_areas = true
+
+[node name="Crosshair" type="Line2D" parent="."]
+points = PackedVector2Array(-10, 10, 10, -10, 0, 0, -10, -10, 10, 10)
+width = 5.0
+
+[node name="CrosshairLaser" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, -2500)
+width = 5.0
+default_color = Color(1, 0, 0, 0.5019608)
+gradient = ExtResource("2_qhqgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+use_parent_material = true
+texture = ExtResource("4_dqkch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_smehm")
+animation = &"rotate_left"
+autoplay = "default"
+frame_progress = 0.08874869
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(0, -60)

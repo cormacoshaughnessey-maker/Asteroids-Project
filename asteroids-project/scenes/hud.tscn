@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfmdgyassv8xj"]
+
+[ext_resource type="Script" uid="uid://clx1qgvc726t8" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_oo0fn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oo0fn"]
+font = ExtResource("2_oo0fn")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+font = ExtResource("2_oo0fn")
+font_size = 64
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ahhtf")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 628.0
+offset_bottom = 94.0
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_oo0fn")
+
+[node name="Lives" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 92.0
+offset_right = 410.0
+offset_bottom = 220.0
+scale = Vector2(0.5, 0.5)
+
+[node name="HighScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 625.0
+offset_top = 18.0
+offset_right = 1902.0
+offset_bottom = 106.0
+text = "HIGH SCORE (No high score): 0"
+label_settings = SubResource("LabelSettings_ahhtf")
+horizontal_alignment = 2
