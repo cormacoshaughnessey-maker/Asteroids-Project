@@ -1,0 +1,160 @@
+[gd_scene load_steps=16 format=3 uid="uid://bu54ocvr48nwm"]
+
+[ext_resource type="PackedScene" uid="uid://dk4h4b6561mw6" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://gmps88ifb2mb" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dfmdgyassv8xj" path="res://scenes/hud.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dppfeb783vmj0" path="res://scenes/game_over_screen.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://cwjm2iodkhdkw" path="res://scenes/asteroid.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://qksxwtr44iae" path="res://scenes/pause_menu.tscn" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bjk88wrxcqgm1" path="res://scenes/name_input.tscn" id="5_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://daw3vi281yw1g" path="res://scenes/player_spawn_area.tscn" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://hs212q24xjln" path="res://scripts/laser_despawn_zone.gd" id="8_gee14"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p57ef"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 540, 1)
+spread = 0.0
+initial_velocity_min = -10.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5sy4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 540, 1)
+spread = 0.0
+initial_velocity_min = -20.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gee14"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 540, 1)
+spread = 0.0
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(142, 1437.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
+size = Vector2(2278, 152)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gee14"]
+radius = 306.16336
+
+[node name="Game" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_yqjtg")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("2_lbhrr")]
+
+[node name="GameOverScreen" parent="UI" instance=ExtResource("3_iywne")]
+visible = false
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("4_u5sy4")]
+visible = false
+
+[node name="NameInput" parent="UI" instance=ExtResource("5_0tnpc")]
+visible = false
+
+[node name="BackgroundStarFields" type="Node2D" parent="."]
+position = Vector2(1930, 540)
+
+[node name="StarFieldBack" type="GPUParticles2D" parent="BackgroundStarFields"]
+z_index = -100
+amount = 1000
+lifetime = 200.0
+preprocess = 420.0
+process_material = SubResource("ParticleProcessMaterial_p57ef")
+
+[node name="StarFieldMiddle" type="GPUParticles2D" parent="BackgroundStarFields"]
+z_index = -95
+amount = 250
+lifetime = 100.0
+preprocess = 420.0
+process_material = SubResource("ParticleProcessMaterial_u5sy4")
+
+[node name="StarFieldFront" type="GPUParticles2D" parent="BackgroundStarFields"]
+z_index = -90
+amount = 50
+lifetime = 70.0
+preprocess = 420.0
+process_material = SubResource("ParticleProcessMaterial_gee14")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(960, 540)
+
+[node name="Lasers" type="Node" parent="."]
+
+[node name="Asteroids" type="Node" parent="."]
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(1502, 420)
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(1298, 641)
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(812, 320)
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(901, 769)
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+position = Vector2(596, 486)
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="PlayerSpawnArea" parent="PlayerSpawnPos" instance=ExtResource("6_p57ef")]
+
+[node name="LaserDespawnZone" type="Area2D" parent="."]
+visible = false
+collision_layer = 33
+collision_mask = 9
+script = ExtResource("8_gee14")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LaserDespawnZone"]
+position = Vector2(2155, 550)
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserDespawnZone"]
+position = Vector2(-199, 527)
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LaserDespawnZone"]
+position = Vector2(988, -155)
+shape = SubResource("RectangleShape2D_vtaks")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LaserDespawnZone"]
+position = Vector2(996, 1218)
+shape = SubResource("RectangleShape2D_vtaks")
+
+[node name="AsteroidSpawnArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+shape = SubResource("CircleShape2D_gee14")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+position = Vector2(1920, 0)
+shape = SubResource("CircleShape2D_gee14")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+position = Vector2(1920, 1080)
+shape = SubResource("CircleShape2D_gee14")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+position = Vector2(0, 1080)
+shape = SubResource("CircleShape2D_gee14")

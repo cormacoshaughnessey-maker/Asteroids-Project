@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccssenrahlxib"]
+
+[ext_resource type="Script" uid="uid://bscsu8sllqoec" path="res://scripts/score_board.gd" id="1_ek31y"]
+[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_gjtyh"]
+
+[sub_resource type="SystemFont" id="SystemFont_ek31y"]
+font_names = PackedStringArray("Agency FB")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjtyh"]
+font = SubResource("SystemFont_ek31y")
+font_size = 64
+
+[node name="ScoreBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ek31y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 714.0
+offset_top = 99.0
+offset_right = 1203.0
+offset_bottom = 965.0
+text = "     TOP SCORES:
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10."
+label_settings = SubResource("LabelSettings_gjtyh")
+
+[node name="BackButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("2_gjtyh")
+theme_override_font_sizes/font_size = 64
+text = "Click to hide high scores"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_button_pressed"]

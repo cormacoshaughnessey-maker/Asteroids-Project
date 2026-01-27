@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cd47sm480kvue"]
+
+[ext_resource type="Shader" uid="uid://ccpol0rgidukf" path="res://resources/laser_shader.tres" id="1_a7dhc"]
+[ext_resource type="Script" uid="uid://bihj4m834kuyp" path="res://scripts/laser.gd" id="1_xmihv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjj73"]
+shader = ExtResource("1_a7dhc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7dhc"]
+shader = ExtResource("1_a7dhc")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5no5p"]
+radius = 5.0
+height = 60.0
+
+[node name="Laser" type="Area2D"]
+material = SubResource("ShaderMaterial_jjj73")
+collision_layer = 8
+collision_mask = 37
+script = ExtResource("1_xmihv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a7dhc")
+offset_left = -5.0
+offset_top = -60.0
+offset_right = 5.0
+color = Color(0, 0.9137255, 0.92156863, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -30)
+shape = SubResource("CapsuleShape2D_5no5p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0, -30)
+rect = Rect2(-5, -29, 10, 58)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

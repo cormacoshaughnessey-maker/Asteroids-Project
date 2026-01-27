@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://bu17wv163tsom"]
+
+[resource]
+font_names = PackedStringArray("Agency FB")
