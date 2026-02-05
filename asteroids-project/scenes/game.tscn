@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bu54ocvr48nwm"]
+[gd_scene format=3 uid="uid://bu54ocvr48nwm"]
 
 [ext_resource type="PackedScene" uid="uid://dk4h4b6561mw6" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://gmps88ifb2mb" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -51,114 +51,114 @@ size = Vector2(2278, 152)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gee14"]
 radius = 306.16336
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1726273337]
 process_mode = 1
 script = ExtResource("1_yqjtg")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=396836463]
 
-[node name="HUD" parent="UI" instance=ExtResource("2_lbhrr")]
+[node name="HUD" parent="UI" unique_id=355274548 instance=ExtResource("2_lbhrr")]
 
-[node name="GameOverScreen" parent="UI" instance=ExtResource("3_iywne")]
+[node name="GameOverScreen" parent="UI" unique_id=101366441 instance=ExtResource("3_iywne")]
 visible = false
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("4_u5sy4")]
+[node name="PauseMenu" parent="UI" unique_id=1280492843 instance=ExtResource("4_u5sy4")]
 visible = false
 
-[node name="NameInput" parent="UI" instance=ExtResource("5_0tnpc")]
+[node name="NameInput" parent="UI" unique_id=1902645396 instance=ExtResource("5_0tnpc")]
 visible = false
 
-[node name="ScoreBoard" parent="UI" instance=ExtResource("6_vtaks")]
+[node name="ScoreBoard" parent="UI" unique_id=580182504 instance=ExtResource("6_vtaks")]
 visible = false
 
-[node name="BackgroundStarFields" type="Node2D" parent="."]
+[node name="BackgroundStarFields" type="Node2D" parent="." unique_id=366451939]
 position = Vector2(1930, 540)
 
-[node name="StarFieldBack" type="GPUParticles2D" parent="BackgroundStarFields"]
+[node name="StarFieldBack" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=1932027915]
 z_index = -100
 amount = 1000
 lifetime = 200.0
 preprocess = 420.0
 process_material = SubResource("ParticleProcessMaterial_p57ef")
 
-[node name="StarFieldMiddle" type="GPUParticles2D" parent="BackgroundStarFields"]
+[node name="StarFieldMiddle" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=1185584763]
 z_index = -95
 amount = 250
 lifetime = 100.0
 preprocess = 420.0
 process_material = SubResource("ParticleProcessMaterial_u5sy4")
 
-[node name="StarFieldFront" type="GPUParticles2D" parent="BackgroundStarFields"]
+[node name="StarFieldFront" type="GPUParticles2D" parent="BackgroundStarFields" unique_id=423228917]
 z_index = -90
 amount = 50
 lifetime = 70.0
 preprocess = 420.0
 process_material = SubResource("ParticleProcessMaterial_gee14")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=427141950 instance=ExtResource("1_uwrxv")]
 position = Vector2(960, 540)
 
-[node name="Lasers" type="Node" parent="."]
+[node name="Lasers" type="Node" parent="." unique_id=565148472]
 
-[node name="Asteroids" type="Node" parent="."]
+[node name="Asteroids" type="Node" parent="." unique_id=84143330]
 
-[node name="Asteroid2" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+[node name="Asteroid2" parent="Asteroids" unique_id=915148986 instance=ExtResource("3_lnu2h")]
 position = Vector2(1356, 276)
 
-[node name="Asteroid3" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+[node name="Asteroid3" parent="Asteroids" unique_id=1536186961 instance=ExtResource("3_lnu2h")]
 position = Vector2(1373, 714)
 
-[node name="Asteroid4" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+[node name="Asteroid4" parent="Asteroids" unique_id=997938490 instance=ExtResource("3_lnu2h")]
 position = Vector2(831, 176)
 
-[node name="Asteroid5" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+[node name="Asteroid5" parent="Asteroids" unique_id=581161703 instance=ExtResource("3_lnu2h")]
 position = Vector2(856, 919)
 
-[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_lnu2h")]
+[node name="Asteroid" parent="Asteroids" unique_id=1068520551 instance=ExtResource("3_lnu2h")]
 position = Vector2(523, 495)
 
-[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+[node name="PlayerSpawnPos" type="Marker2D" parent="." unique_id=823511158]
 position = Vector2(960, 540)
 
-[node name="PlayerSpawnArea" parent="PlayerSpawnPos" instance=ExtResource("6_p57ef")]
+[node name="PlayerSpawnArea" parent="PlayerSpawnPos" unique_id=1700576083 instance=ExtResource("6_p57ef")]
 
-[node name="LaserDespawnZone" type="Area2D" parent="."]
+[node name="LaserDespawnZone" type="Area2D" parent="." unique_id=1499188676]
 visible = false
 collision_layer = 33
 collision_mask = 9
 script = ExtResource("8_gee14")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="LaserDespawnZone"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LaserDespawnZone" unique_id=791009922]
 position = Vector2(2155, 550)
 shape = SubResource("RectangleShape2D_0tnpc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserDespawnZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserDespawnZone" unique_id=18322017]
 position = Vector2(-199, 527)
 shape = SubResource("RectangleShape2D_0tnpc")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="LaserDespawnZone"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LaserDespawnZone" unique_id=672666648]
 position = Vector2(988, -155)
 shape = SubResource("RectangleShape2D_vtaks")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="LaserDespawnZone"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LaserDespawnZone" unique_id=1919018063]
 position = Vector2(996, 1218)
 shape = SubResource("RectangleShape2D_vtaks")
 
-[node name="AsteroidSpawnArea" type="Area2D" parent="."]
+[node name="AsteroidSpawnArea" type="Area2D" parent="." unique_id=2086555197]
 collision_layer = 64
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AsteroidSpawnArea" unique_id=1682972870]
 shape = SubResource("CircleShape2D_gee14")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AsteroidSpawnArea" unique_id=2035061989]
 position = Vector2(1920, 0)
 shape = SubResource("CircleShape2D_gee14")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AsteroidSpawnArea" unique_id=1510677796]
 position = Vector2(1920, 1080)
 shape = SubResource("CircleShape2D_gee14")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="AsteroidSpawnArea"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="AsteroidSpawnArea" unique_id=675537627]
 position = Vector2(0, 1080)
 shape = SubResource("CircleShape2D_gee14")
