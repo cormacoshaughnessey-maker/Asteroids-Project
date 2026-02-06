@@ -33,17 +33,17 @@ func _ready() -> void:
 			speed = randf_range(50,100)
 			#sprite.texture = preload("res://assets/icon.svg") # Placeholder texture
 			collision_shape.set_deferred("shape", preload("res://resources/asteroid_collision_large.tres"))
-			shape.scale = Vector2(1,1)
+			shape.scale = Vector2(2,2)
 		AsteroidSize.MEDIUM:
 			speed = randf_range(100,150)
 			#sprite.texture = preload("res://assets/icon.svg")
 			collision_shape.set_deferred("shape", preload("res://resources/asteroid_collision_medium.tres"))
-			shape.scale = Vector2(0.5,0.5)
+			shape.scale = Vector2(1,1)
 		AsteroidSize.SMALL:
 			speed = randf_range(150,200)
 			#sprite.texture = preload("res://assets/icon.svg")
 			collision_shape.set_deferred("shape", preload("res://resources/asteroid_collision_small.tres"))
-			shape.scale = Vector2(0.2,0.2)
+			shape.scale = Vector2(0.5,0.5)
 	rotation_speed = speed + randf_range(-25,25)
 
 func _physics_process(delta: float) -> void:
