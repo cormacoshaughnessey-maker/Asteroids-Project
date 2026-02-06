@@ -26,6 +26,7 @@ var points:int:
 
 signal exploded(pos, size, points)
 
+
 func _ready() -> void:
 	rotation = randf_range(0, TAU)
 	match size:
@@ -46,6 +47,7 @@ func _ready() -> void:
 			shape.scale = Vector2(0.5,0.5)
 	rotation_speed = speed + randf_range(-25,25)
 
+
 func _physics_process(delta: float) -> void:
 	global_position += movement_vector.rotated(rotation) * speed * delta
 
@@ -61,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		global_position.x = -radius
 	
 	shape.rotate(deg_to_rad(rotation_speed*delta))
+
 
 func explode() -> void:
 	exploded.emit(global_position, size, points)

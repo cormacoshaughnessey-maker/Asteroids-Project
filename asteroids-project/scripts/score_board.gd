@@ -4,6 +4,7 @@ extends Control
 @onready var game_root_node := self.get_parent().get_parent()
 @onready var name_input = game_root_node.get_node("UI/NameInput")
 
+
 func set_score_list(list:Dictionary) -> void:
 	var new_text:String
 	var score_list:Array
@@ -16,10 +17,12 @@ func set_score_list(list:Dictionary) -> void:
 		new_text+=str(i+1)+". "+str(score_list[i][0])+": "+str(int(score_list[i][1]))+"\n"
 	score_label.text = new_text
 
+
 func sort_ascending(a, b):
 	if a[1] < b[1]:
 		return true
 	return false
+
 
 func _on_button_pressed() -> void:
 	name_input.show()

@@ -4,15 +4,17 @@ class_name Laser extends Area2D
 var movement_vector:=Vector2(0,-1)
 var move := false
 
+
 func _enter_tree() -> void:
 	await get_tree().create_timer(0.20).timeout
 	move = true
 	
 
+
 func _physics_process(delta: float) -> void:
 	global_position += movement_vector.rotated(rotation) * speed * delta
 	#slow_shot(delta)
-	
+
 
 func slow_shot(delta: float) -> void:
 	if move:

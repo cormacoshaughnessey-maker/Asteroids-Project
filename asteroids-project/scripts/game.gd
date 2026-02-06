@@ -33,6 +33,7 @@ var lives := 3:
 		lives = value
 		hud.init_lives(value)
 
+
 func _ready() -> void:
 	game_over_screen.hide()
 	score = 0
@@ -66,8 +67,10 @@ func spawn_new_asteroids() -> void:
 		spawn_asteroid(Vector2(screen_size.x,screen_size.y), Asteroid.AsteroidSize.LARGE)
 	pass
 
+
 func _on_player_laser_shot(laser:Laser) -> void:
 	lasers.add_child(laser)
+
 
 func _on_player_died() -> void:
 	lives -= 1
@@ -106,6 +109,7 @@ func spawn_asteroid(pos:Vector2, size) -> void:
 	asteroid_var.exploded.connect(_on_asteroid_exploded)
 	asteroids.call_deferred("add_child",asteroid_var)
 
+
 func show_scoreboard() -> void:
 	score_board.set_score_list(high_score_list)
 	score_board.show()
@@ -113,6 +117,7 @@ func show_scoreboard() -> void:
 	pass
 
 
+#region Save and load
 func save_score(_points:=0) -> void:
 	if score>high_score:
 		high_score_player = player_name
@@ -120,7 +125,8 @@ func save_score(_points:=0) -> void:
 	#pass
 	save_game()
 	#config_save()
-	
+
+
 func load_scores() -> void:
 	load_game()
 	#config_load()
@@ -247,3 +253,4 @@ func load_game():
 #"""
 func _exit_tree() -> void:
 	save_score()
+#endregion

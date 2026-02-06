@@ -12,6 +12,7 @@ var ui_life_scene = preload("res://scenes/ui_life.tscn")
 	set(value):
 		high_score.text = "HIGH SCORE ("+game_root_node.high_score_player+"): "+str(value)
 
+
 func init_lives(amount:int) -> void:
 	#for ul in lives.get_children():
 		#ul.queue_free()
