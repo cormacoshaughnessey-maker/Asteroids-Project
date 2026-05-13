@@ -1,13 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qksxwtr44iae"]
+[gd_scene format=3 uid="uid://qksxwtr44iae"]
 
 [ext_resource type="Script" uid="uid://b6u085cw7ttyt" path="res://scripts/pause_menu.gd" id="1_n87rw"]
-[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_myx47"]
+[ext_resource type="LabelSettings" uid="uid://bj16css6r8slh" path="res://resources/128_pt_default_label_settings.tres" id="2_myx47"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n87rw"]
-font = ExtResource("2_myx47")
-font_size = 128
-
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1130737167]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -15,7 +11,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_n87rw")
 
-[node name="PauseText" type="Label" parent="."]
+[node name="PauseText" type="Label" parent="." unique_id=1075420508]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,5 +25,5 @@ offset_bottom = 547.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "PAUSED"
-label_settings = SubResource("LabelSettings_n87rw")
+label_settings = ExtResource("2_myx47")
 horizontal_alignment = 1

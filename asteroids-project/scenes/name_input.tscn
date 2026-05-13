@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjk88wrxcqgm1"]
+[gd_scene format=3 uid="uid://bjk88wrxcqgm1"]
 
 [ext_resource type="Script" uid="uid://lftrvvbwkbq2" path="res://scripts/name_input.gd" id="1_ksk6y"]
-[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_n65fe"]
+[ext_resource type="LabelSettings" uid="uid://de7rlht0qt7le" path="res://resources/96_pt_default_label_settings.tres" id="2_t3j2b"]
+[ext_resource type="LabelSettings" uid="uid://bg5lvnex5rj83" path="res://resources/64_pt_default_label_settings.tres" id="3_lcnf6"]
+[ext_resource type="PackedScene" uid="uid://b80xkfqvw2jsw" path="res://scenes/letter_input.tscn" id="4_lcnf6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n65fe"]
-font = ExtResource("2_n65fe")
-font_size = 96
-
-[node name="NameInput" type="Control"]
+[node name="NameInput" type="Control" unique_id=1088033012]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -15,13 +13,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ksk6y")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1818702029]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1997964195]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,22 +38,60 @@ placeholder_text = "Insert Name Here"
 alignment = 1
 max_length = 20
 
-[node name="EnterNameLabel" type="Label" parent="."]
+[node name="EnterNameLabel" type="Label" parent="." unique_id=1374737251]
 layout_mode = 1
-offset_left = 519.0
 offset_top = 299.0
-offset_right = 1401.0
-offset_bottom = 414.0
+offset_right = 1920.0
+offset_bottom = 419.0
 text = "Enter a name to start playing"
-label_settings = SubResource("LabelSettings_n65fe")
+label_settings = ExtResource("2_t3j2b")
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="EnterNameLabel2" type="Label" parent="." unique_id=1899860571]
+layout_mode = 1
+offset_top = 599.0
+offset_right = 1920.0
+offset_bottom = 746.0
+text = "Use forward/backward inputs
+to select, shoot to confirm"
+label_settings = ExtResource("3_lcnf6")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1005552812]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("2_n65fe")
+offset_left = 10.0
+offset_right = 698.0
+offset_bottom = 80.0
 theme_override_font_sizes/font_size = 64
 text = "Click to view high scores"
+
+[node name="LetterInputs" type="Control" parent="." unique_id=282872255]
+anchors_preset = 0
+offset_left = 960.0
+offset_top = 492.0
+offset_right = 960.0
+offset_bottom = 532.0
+
+[node name="LetterInput" parent="LetterInputs" unique_id=869503699 instance=ExtResource("4_lcnf6")]
+layout_mode = 1
+offset_left = -85.0
+offset_right = -45.0
+
+[node name="LetterInput2" parent="LetterInputs" unique_id=1277564971 instance=ExtResource("4_lcnf6")]
+layout_mode = 1
+offset_left = -25.0
+offset_right = 15.0
+
+[node name="LetterInput3" parent="LetterInputs" unique_id=945281295 instance=ExtResource("4_lcnf6")]
+layout_mode = 1
+offset_left = 35.0
+offset_right = 75.0
+
+[node name="LetterSelectIndicator" type="ColorRect" parent="." unique_id=1260238948]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+rotation = 0.7853982
 
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="Button" to="." method="display_scoreboard"]

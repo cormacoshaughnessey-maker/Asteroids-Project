@@ -46,6 +46,7 @@ func _ready() -> void:
 		pass
 	load_scores()
 	name_input.show()
+	name_input.selecting_name = true
 	get_tree().paused = true
 
 

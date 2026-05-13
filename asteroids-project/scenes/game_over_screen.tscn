@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dppfeb783vmj0"]
+[gd_scene format=3 uid="uid://dppfeb783vmj0"]
 
 [ext_resource type="Script" uid="uid://khfofthdkqeg" path="res://scripts/game_over_screen.gd" id="1_iwahs"]
-[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_61w2s"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_iwahs"]
-font = ExtResource("2_61w2s")
-font_size = 128
+[ext_resource type="LabelSettings" uid="uid://bj16css6r8slh" path="res://resources/128_pt_default_label_settings.tres" id="2_jw6e5"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_iwahs"]
 action = &"reset"
@@ -13,7 +9,7 @@ action = &"reset"
 [sub_resource type="Shortcut" id="Shortcut_61w2s"]
 events = [SubResource("InputEventAction_iwahs")]
 
-[node name="GameOverScreen" type="Control"]
+[node name="GameOverScreen" type="Control" unique_id=1950843540]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iwahs")
 
-[node name="GameOver" type="Label" parent="."]
+[node name="GameOver" type="Label" parent="." unique_id=1356617833]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,9 +32,9 @@ offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "GAME OVER"
-label_settings = SubResource("LabelSettings_iwahs")
+label_settings = ExtResource("2_jw6e5")
 
-[node name="RestartButton" type="Button" parent="."]
+[node name="RestartButton" type="Button" parent="." unique_id=3913534]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,7 +47,6 @@ offset_right = 46.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_61w2s")
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_61w2s")
 text = "BACK TO TITLE"

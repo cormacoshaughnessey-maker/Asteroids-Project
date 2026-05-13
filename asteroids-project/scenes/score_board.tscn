@@ -1,17 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccssenrahlxib"]
+[gd_scene format=3 uid="uid://ccssenrahlxib"]
 
 [ext_resource type="Script" uid="uid://bscsu8sllqoec" path="res://scripts/score_board.gd" id="1_ek31y"]
-[ext_resource type="SystemFont" uid="uid://bu17wv163tsom" path="res://resources/default_font.tres" id="2_gjtyh"]
+[ext_resource type="LabelSettings" uid="uid://bg5lvnex5rj83" path="res://resources/64_pt_default_label_settings.tres" id="2_wcrpl"]
 
-[sub_resource type="SystemFont" id="SystemFont_ek31y"]
-font_names = PackedStringArray("Agency FB")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_gjtyh"]
-font = SubResource("SystemFont_ek31y")
-font_size = 64
-
-[node name="ScoreBoard" type="Control"]
+[node name="ScoreBoard" type="Control" unique_id=716260341]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ek31y")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2010979751]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=1113509472]
 layout_mode = 0
 offset_left = 714.0
 offset_top = 99.0
@@ -43,14 +35,14 @@ text = "     TOP SCORES:
 8.
 9.
 10."
-label_settings = SubResource("LabelSettings_gjtyh")
+label_settings = ExtResource("2_wcrpl")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=53646848]
 process_mode = 3
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("2_gjtyh")
+offset_left = 10.0
+offset_right = 682.0
+offset_bottom = 80.0
 theme_override_font_sizes/font_size = 64
 text = "Click to hide high scores"
 
